@@ -1,13 +1,13 @@
+# 6. Crea una clase "Estudiante" con propiedades para el nombre, la edad y la carrera, 
+# y métodos para obtener y establecer estas propiedades, 
+# así como un método para calcular la nota media de un conjunto de exámenes.
 
-# 7. Crea una clase "Banco" con propiedades para el nombre del banco y la tasa de interés, 
-# y métodos para calcular el interés que se obtendría en una cantidad determinada de dinero 
-# y el tiempo que se tardaría en duplicar esa cantidad.
-
-class Banco:
-    def __init__(self, nombre, tasa_interes):
+class Estudiante:
+    def __init__(self, nombre, edad, carrera):
         # Inicializo propiedades
         self.nombre = nombre
-        self.tasa_interes = tasa_interes  # en decimal (0.10 = 10%)
+        self.edad = edad
+        self.carrera = carrera
 
     def obtener_nombre(self):
         return self.nombre
@@ -15,45 +15,57 @@ class Banco:
     def establecer_nombre(self, nombre_nuevo):
         self.nombre = nombre_nuevo
 
-    def obtener_tasa_interes(self):
-        return self.tasa_interes
+    def obtener_edad(self):
+        return self.edad
 
-    def establecer_tasa_interes(self, nueva_tasa):
-        self.tasa_interes = nueva_tasa
+    def establecer_edad(self, edad_nueva):
+        self.edad = edad_nueva
 
-    def calcular_interes(self, capital, tiempo):
-        # Interes simple: Interes = Capital * tasa * tiempo(años)
-        return capital * self.tasa_interes * tiempo
+    def obtener_carrera(self):
+        return self.carrera
+    
+    def establecer_carrera(self, carrera_nueva):
+        self.carrera = carrera_nueva
 
-    def calcular_tiempo_duplicar(self):
-        # Tiempo aprox para duplicar el capital (2 dividido la tasa de interes)
-        return 2 / self.tasa_interes
-
+    
+    def calcular_nota_media(self, notas):
+        if len(notas) == 0:
+            return 0
+        return sum(notas) / len(notas)
 
 if __name__ == "__main__":
-    # Crear instancia
-    banco1 = Banco("Banco Nación", 0.10)
+    # Creo instancia
+    estudiante1 = Estudiante("Joseph", 17, "Programador")
 
-    print(f"Banco: {banco1.obtener_nombre()}")
-    print(f"Tasa de interés anual: {banco1.obtener_tasa_interes() * 100}%")
-
-    capital = float(input("Ingrese capital: "))
-    tiempo = float(input("Ingrese tiempo (años): "))
-
-    interes = banco1.calcular_interes(capital, tiempo)
-    print(f"Interes generado: {interes}")
-
-    tiempo_dup = banco1.calcular_tiempo_duplicar()
-    print(f"Tiempo para duplicar el capital: {tiempo_dup} años")
+    # Mostrar propiedades
+    print(f"Nombre: {estudiante1.obtener_nombre()}")
+    print(f"Edad: {estudiante1.obtener_edad()}")
+    print(f"Carrera: {estudiante1.obtener_carrera()}")
+    print("Nota media: 9")
 
     # Modificar valores
-    print("\nModificar banco:")
+    print("Establece un Nuevo Alumno:")
     nuevo_nombre = input("Nombre: ")
-    nueva_tasa = float(input("Tasa de interés (ej: 0.15 para 15%): "))
+    nueva_edad = int(input("Edad: "))
+    nueva_carrera =  input("Carrera: ")
 
-    banco1.establecer_nombre(nuevo_nombre)
-    banco1.establecer_tasa_interes(nueva_tasa)
+    estudiante1.establecer_nombre(nuevo_nombre)
+    estudiante1.establecer_edad(nueva_edad)
+    estudiante1.establecer_carrera(nueva_carrera)
 
+    notas = []
+    print("\nIngrese las notas (ingrese -1 para terminar):")
+
+    while True:
+        nota = float(input("Nota: "))
+        if nota == -1:
+            break
+        notas.append(nota)
+
+
+    # Mostrar valores actualizados
     print("\nDespués de actualizar:")
-    print(f"Banco: {banco1.obtener_nombre()}")
-    print(f"Tasa interes anual: {banco1.obtener_tasa_interes() * 100}%")
+    print(f"Nombre:{estudiante1.obtener_nombre()}")
+    print(f"Edad: {estudiante1.obtener_edad()}")
+    print(f"Carrera: {estudiante1.obtener_carrera()}")
+    print(f"Nota media: {estudiante1.calcular_nota_media(notas)}")
