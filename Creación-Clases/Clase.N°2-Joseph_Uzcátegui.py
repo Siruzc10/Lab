@@ -1,46 +1,31 @@
 
-# 3. Crea una clase "Producto" con propiedades para el nombre, el precio y el stock disponible, 
-# y métodos para aumentar o disminuir el stock.
+# 2. Crea una clase "Coche" con propiedades para la marca, el modelo y el año de fabricación, 
+# y un método para obtener el número de años que ha pasado desde que se fabricó el coche.
 
-class Producto:
-    def __init__(self, nombre, precio, stock_disponible):
-        
-        self.nombre = nombre                    
-        self.precio = precio
-        self.stock_disponible = stock_disponible
+from datetime import datetime
 
-    def obtener_nombre(self):
-        return self.nombre
+class Coche:
 
-    def obtener_precio(self):
-        return self.precio
+    def __init__(self, marca, modelo, año):
+        self._marca = marca
+        self._modelo = modelo
+        self._año = año
 
-    def obtener_stock_disponible(self):
-        return self.stock_disponible
+    def obtener_marca(self):
+        return self._marca
 
-    def establecer_stock_disponible(self, nuevo_stock):
-        self.stock_disponible = nuevo_stock
+    def obtener_modelo(self):
+        return self._modelo
 
+    def obtener_año(self):
+        return self._año
 
+    def años_transcurridos(self):
+        return datetime.now().year - self._año
 
 
 if __name__ == "__main__":
-    # Creo instancia
-    producto1 = Producto("PS5", 1200, "20")
+    coche = Coche("Toyota", "Corolla", 2020)
 
-    # Obtener / mostrar las propiedades
-    print(f"Nombre: {producto1.obtener_nombre()}")
-    print(f"Precio: {producto1.obtener_precio()}")
-    print(f"Stock Disponible: {producto1.obtener_stock_disponible()}")
-
-    nuevo_stock = int(input("Nueva cantidad en el stock: "))
-
-    # Establecer nuevas propiedades
-    producto1.establecer_stock_disponible(nuevo_stock)
-
-    # Mostrar las propiedades actualizadas
-    print("\nDespués de actualizar:")
-    print(f"Nombre: {producto1.obtener_nombre()}")
-    print(f"Precio: {producto1.obtener_precio()}")
-    print(f"Stock Disponible: {producto1.obtener_stock_disponible()}")
- 
+    print("Marca:", coche.obtener_marca())
+    print("Años:", coche.años_transcurridos())
