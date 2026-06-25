@@ -1,4 +1,3 @@
-
 # 2. Crea una clase "Coche" con propiedades para la marca, el modelo y el año de fabricación, 
 # y un método para obtener el número de años que ha pasado desde que se fabricó el coche.
 
