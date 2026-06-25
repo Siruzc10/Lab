@@ -1,67 +1,28 @@
 
-# 9. Crea una clase "Empleado" con propiedades para el nombre, la edad, el salario y el cargo, 
-# y métodos para obtener y establecer estas propiedades, así como un método para calcular el salario anual.
+# Crea una clase "Tienda" con propiedades para el nombre de la tienda y una lista de productos disponibles, 
+# y métodos para añadir o eliminar productos de la lista y para obtener la lista completa de productos.
 
-class Empleado:
-    def __init__(self, nombre, edad, salario, cargo):
-        # Inicializo propiedades
-        self.nombre = nombre
-        self.edad = edad
-        self.salario = salario
-        self.cargo = cargo
+class Tienda:
 
-    def obtener_nombre(self):
-        return self.nombre
+    def __init__(self, nombre):
+        self._nombre = nombre
+        self._productos = []
 
-    def establecer_nombre(self, nombre_nuevo):
-        self.nombre = nombre_nuevo
+    def agregar_producto(self, producto):
+        self._productos.append(producto)
 
-    def obtener_edad(self):
-        return self.edad
+    def eliminar_producto(self, producto):
+        if producto in self._productos:
+            self._productos.remove(producto)
 
-    def establecer_edad(self, edad_nueva):
-        self.edad = edad_nueva
-
-    def obtener_salario(self):
-        return self.salario
-    
-    def establecer_salario(self, salario_nuevo):
-        self.salario = salario_nuevo
-
-    def calcular_s_anual(self):
-        return self.salario * 12
-    
-    def obtener_cargo(self):
-        return self.cargo
-    
-    def establecer_cargo(self, cargo_nuevo):
-        self.cargo = cargo_nuevo
+    def obtener_productos(self):
+        return self._productos
 
 
 if __name__ == "__main__":
-    Empleado1 = Empleado("Pepe", 18, 900, "Cajero")
+    tienda = Tienda("Mi Tienda")
 
-    print(f"Nombre: {Empleado1.obtener_nombre()}")
-    print(f"Edad: {Empleado1.obtener_edad()}")
-    print(f"Salario: {Empleado1.obtener_salario()}")
-    print(f"Cargo: {Empleado1.obtener_cargo()}")
-    print(f"Salario Anual: {Empleado1.calcular_s_anual()}")
+    tienda.agregar_producto("Mouse")
+    tienda.agregar_producto("Teclado")
 
-   # Modificar valores
-    print("\nNuevo Empleado:")
-    nuevo_nombre = input("Nombre: ")
-    nueva_edad = int(input("Edad: "))
-    nuevo_salario = int(input("Salario: "))
-    nuevo_cargo = input("Cargo: ")
-
-    Empleado1.establecer_nombre(nuevo_nombre)
-    Empleado1.establecer_edad(nueva_edad)
-    Empleado1.establecer_salario(nuevo_salario)
-    Empleado1.establecer_cargo(nuevo_cargo)
-
-    print("\nDespues de actualizar:")
-    print(f"Nombre: {Empleado1.obtener_nombre()}")
-    print(f"Edad: {Empleado1.obtener_edad()}")
-    print(f"Cargo: {Empleado1.obtener_cargo()}")
-    print(f"Salario: {Empleado1.obtener_salario()}")
-    print(f"Salario Anual: {Empleado1.calcular_s_anual()}")
+    print(tienda.obtener_productos())
